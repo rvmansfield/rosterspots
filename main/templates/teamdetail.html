@@ -1,0 +1,55 @@
+{% extends "master.html" %}
+{% load static %}
+{% block title %}
+  Roster Spots
+{% endblock %}
+
+
+{% block content %}
+<div class="row row-cols-lg-1 g-2 g-lg-3">
+  <div class="col">
+    <h4><a class="btn btn-outline-primary" href="javascript:history.back()">< BACK TO TEAMS</a></h4>
+  </div>
+</div>
+
+<div class="row row-cols-lg-1 g-2 g-lg-3">
+  <div class="col">
+    <h1 class="display-5 fw-bold lh-1 mb-3">{{ teaminfo.name }}</h1>
+  </div>
+</div>
+
+<div class="row row-cols-lg-2 g-2 g-lg-3">
+  <div class="col">
+    <img src="https://api.mobilecoach.org/api/images/e1c690ba-d702-4031-8707-ef2cfc9fb9bf" class="d-block mx-lg-auto img-fluid" height="400" width="100%" loading="lazy">
+  </div>
+  <div class="col" style="font-size:20px">
+    {{ teaminfo.description }}
+    <br>
+    <i class="fa-solid fa-location-dot fa-fw" style="font-size:40px;color:#2196F3"></i>
+      {{ teaminfo.city }}, {{ teaminfo.state }}
+      <br>
+        <i class="fa-regular fa-calendar-days fa-fw" style="font-size:40px;color:#2196F3"></i>{% for agegroups in teaminfo.agegroups.all %}
+        {{ agegroups.name }}&nbsp;&nbsp;
+    {% empty %}
+        No age information available
+    {% endfor %}
+    <br>
+    <i class="fa-solid fa-people-group fa-fw" style="font-size:40px;color:#2196F3"></i>
+      {% for teamTypes in teaminfo.teamTypes.all %}
+        {{ teamTypes.types }}&nbsp;&nbsp;
+    {% empty %}
+        No team  available
+    {% endfor %}
+    <hr>
+    <i class="fa-solid fa-user fa-fw" style="font-size:40px;color:#2196F3"></i>{{ teaminfo.contactName }}<br>
+    <i class="fa-solid fa-phone fa-fw" style="font-size:40px;color:#2196F3"></i>{{ teaminfo.contactPhone }}<br>
+    <i class="fa-solid fa-envelope fa-fw" style="font-size:40px;color:#2196F3"></i>{{ teaminfo.contactEmail }}
+
+  </div>
+</div>
+
+
+
+
+
+{% endblock %}

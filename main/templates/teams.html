@@ -1,0 +1,129 @@
+{% extends "master.html" %}
+{% load static %}
+{% block title %}
+  Roster Spots
+{% endblock %}
+
+
+{% block content %}
+
+
+ 
+
+<div class="row row-cols-lg-4 g-2 g-lg-3">
+  <div class="col">
+    <h1>Teams</h1>
+  </div>
+  <div class="col">
+    
+      <div class="form-group">
+        <label>Age:</label>
+        <select onchange='updateteams()' class="form-control" id="ageform">
+          <option value=''>Select Age</option>
+          <option value='8'>8u</option>
+          <option value='9'>9u</option>
+          <option value='10'>10u</option>
+          <option value='11'>11u</option>
+          <option value='12'>12u</option>
+          <option value='13'>13u</option>
+          <option value='14'>14u</option>
+          <option value='15'>15u</option>
+          <option value='16'>16u</option>
+          <option value='17'>17u</option>
+          <option value='18'>18u</option>
+        </select>
+      </div>
+    
+  </div>
+  <div class="col">
+    
+    <div class="form-group">
+      <label>Type:</label>
+      <select onchange='updateteams()' class="form-control" id="typeform">
+        <option value=''>Select Team Type</option>
+        <option value='D1 Travel'>D1 Travel</option>
+        <option value='D2 Travel'>D2 Travel</option>
+        <option value='D3 Travel'>D3 Travel</option>
+        <option value='Showcase'>Showcase</option>
+        <option value='High School'>High School</option>
+        <option value='Middle School'>Middle School</option>
+        <option value='Recreation'>Recreation</option>
+      </select>
+    </div>
+  
+</div>
+</div>
+    
+
+
+<hr>
+  <div class="row row-cols-lg-2 g-5 g-lg-5">
+    <div class="col">
+      <h2>{{ message }}</h2>
+    </div>
+  </div>
+
+    <div class="row row-cols-2 row-cols-lg-4 g-2 g-lg-3 align-center">
+            {% for team in allteams %}
+                  <div class="col">
+                    <div class="p-3 border bg-light"><a href="teams/{{ team.slug }}">
+                      <img src="https://api.mobilecoach.org/api/images/e1c690ba-d702-4031-8707-ef2cfc9fb9bf?size=240" class="rounded" alt="Cinque Terre">
+                      <h4>{{ team.name }}</h4>
+                      
+                      <h5>{{ team.city }}, {{ team.state }}</h5>
+                      
+                      Ages: 
+                          {% for agegroups in team.agegroups.all %}
+                              {{ agegroups.name }}, 
+                          {% empty %}
+                              No ages available
+                          {% endfor %}
+                      <hr>
+
+                      Programs:
+                          {% for teamTypes in team.teamTypes.all %}
+                              {{ teamTypes.types }}
+                          {% empty %}
+                              No information available
+                          {% endfor %}
+                    </a>
+                    </div>
+          
+              </div>
+             {% endfor %}
+      </div>
+
+
+      <script>
+
+        //Get querystring and set dropdown values
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const agestring = urlParams.get('a'); 
+        const teamstring = urlParams.get('t'); 
+
+        
+
+        if (agestring !== null) {
+          document.getElementById("ageform").value = agestring;
+        } 
+
+        if (teamstring !== null) {
+          document.getElementById("typeform").value = teamstring;
+        } 
+
+        
+        
+
+        function updateteams()
+          {
+            var selectedAge = document.getElementById("ageform").value;
+            var selectedType = document.getElementById("typeform").value;
+
+            window.location.href = '/teams?a='+selectedAge+'&t='+selectedType;
+          }
+      
+      </script> 
+
+
+{% endblock %}
