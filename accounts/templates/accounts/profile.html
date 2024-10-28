@@ -1,0 +1,21 @@
+{% extends "master.html" %}
+{% load static %}
+{% block title %}
+  Roster Spots
+{% endblock %}
+
+
+{% block content %}
+
+
+
+<h1>{{ user.username }}'s Profile</h1>
+<img src="{{ profile.profile_image.url }}" alt="Profile Image">
+<p>Bio: {{ profile.bio }}</p>
+<p>Location: {{ profile.location }}</p>
+<p>Phone: {{ profile.phone }}</p>
+<p>Email: {{ profile.email }}</p>
+
+
+
+{% endblock %}

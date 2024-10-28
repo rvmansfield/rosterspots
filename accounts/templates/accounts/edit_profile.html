@@ -1,0 +1,18 @@
+{% extends "master.html" %}
+
+{% block content %}
+  <h2>Edit Profile</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div>
+      <h3>Personal Information</h3>
+      {{ user_form.as_p }}
+    </div>
+    <div>
+      <h3>Profile Information</h3>
+      {{ profile_form.as_p }}
+    </div>
+    <button type="submit">Save changes</button>
+  </form>
+  <a href="{% url 'profile' %}">Back to profile</a>
+{% endblock %}

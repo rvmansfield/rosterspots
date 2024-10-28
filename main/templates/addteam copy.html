@@ -1,0 +1,18 @@
+{% extends "master.html" %}
+{% load static %}
+{% block title %}
+  Roster Spots
+{% endblock %}
+
+
+{% block content %}
+
+<h2>Add a new team to Roster Spots</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_table }}  
+        <button type="submit">Save</button>
+    </form>
+
+
+{% endblock %}
