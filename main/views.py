@@ -5,7 +5,9 @@ from .forms import TeamForm
 from django.utils.text import slugify
 from django.contrib.auth.decorators import login_required
 def index(request):
-    return render(request, 'index.html')
+    featuredteams = Teams.objects.filter(featured=True).values()
+
+    return render(request, 'index.html', {'featuredteams': featuredteams})
 
 def teamdetail(request, slug):
 
@@ -40,9 +42,9 @@ def teams(request):
     return render(request, 'teams.html', {'allteams': allteams,'message': message})
 
 @login_required(login_url='/login/')
-def createTeam(request):
+def addTeam(request):
     if request.method == 'POST':
-        form = TeamForm(request.POST)
+        form = TeamForm(request.POST, request.FILES)
         if form.is_valid():
 
             team_obj = form.save(commit=False)
@@ -54,6 +56,6 @@ def createTeam(request):
     else:
         form = TeamForm()
 
-    return render(request, 'createteam.html', {'form': form})
+    return render(request, 'addteam.html', {'form': form})
 
 

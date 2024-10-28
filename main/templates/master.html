@@ -58,11 +58,11 @@
 
 
  
-
+  <div class="container">
   <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="/">
-        <img src="{% static 'images/logo.png' %}" alt="Logo" height="40" class="d-inline-block align-text-middle">
+        <img src="{% static 'images/red_logo.png' %}" alt="Logo" height="40" class="d-inline-block align-text-middle">
         <span class="mb-0 h4"></span>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -72,9 +72,10 @@
         <div class="navbar-nav">
           <a class="nav-link" href="/"><span class="mb-0 h5">Home</span></a>
           <a class="nav-link" href="/teams"><span class="mb-0 h5">Teams</span></a>
-          <a class="nav-link" href="/services"><span class="mb-0 h5">Players</span></a>
-          <a class="nav-link" href="/profile"><span class="mb-0 h5">Profile</span></a>
-          <a class="nav-link" href="/contact"><span class="mb-0 h5">Contact</span></a>
+          <a class="nav-link" href="/accounts/profile"><span class="mb-0 h5">Profile</span></a>
+        </div>
+        <div class="navbar-nav ms-auto">
+          <a class="btn btn-outline-secondary" href="/addteam"><span class="mb-0 h5">Add A Team</span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           {% if user.is_authenticated %}
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h6>Welcome {{ user.username }}</h6>&nbsp;&nbsp;<a class="btn btn-outline-primary" href="{% url 'account_logout' %}">Log Out</a></p>
           {% else %}
@@ -88,6 +89,7 @@
       </div>
     </div>
   </nav>
+</div>
 
   
   {% if messages %}
@@ -111,7 +113,7 @@
   </div>  
   <div class="row g-12 py-2 row-cols-1 row-cols-lg-3">
     <div class="col">
-      <i class="fa-regular fa-copyright"></i> 2024 Listed Below, LLC
+      <i class="fa-regular fa-copyright"></i> 2024 Roster Spots, LLC
     </div> 
     <div class="col m-auto">
       <a href="http://facebook.com/playermetrix" target="_blank"><i class="fa-brands fa-facebook" style="font-size:40px;color:#2196F3"></i></a>&nbsp;&nbsp;<a href="http://twitter.com/playermetrix" target="_blank"><i class="fa-brands fa-twitter" style="font-size:40px;color:#2196F3"></i></a>&nbsp;&nbsp;<a href="http://instagram.com/playermetrix" target="_blank"><i class="fa-brands fa-instagram" style="font-size:40px;color:#2196F3"></i></a>

@@ -7,10 +7,7 @@
 
 {% block content %}
 
-
- 
-
-<div class="row row-cols-lg-4 g-2 g-lg-3">
+<div class="row row-cols-lg-4">
   <div class="col">
     <h1>Teams</h1>
   </div>
@@ -51,27 +48,35 @@
       </select>
     </div>
   
-</div>
+  </div>
 </div>
     
 
 
 <hr>
-  <div class="row row-cols-lg-2 g-5 g-lg-5">
+  <div class="row row-cols-lg-2">
     <div class="col">
       <h2>{{ message }}</h2>
     </div>
   </div>
 
-    <div class="row row-cols-2 row-cols-lg-4 g-2 g-lg-3 align-center">
+    <div class="row row-cols-2 row-cols-lg-4">
             {% for team in allteams %}
                   <div class="col">
                     <div class="p-3 border bg-light"><a href="teams/{{ team.slug }}">
-                      <img src="https://api.mobilecoach.org/api/images/e1c690ba-d702-4031-8707-ef2cfc9fb9bf?size=240" class="rounded" alt="Cinque Terre">
+                      {% if team.picture == 'default.png' %}
+                        <img src="{% static 'images/teams/' %}{{ team.picture }}" width="50%" class="rounded">
+                      {% else %}
+                        <img src="{{ team.picture.url }}" width="100%" class="rounded">  
+                      {% endif %}
                       <h4>{{ team.name }}</h4>
+                  
                       
                       <h5>{{ team.city }}, {{ team.state }}</h5>
-                      
+                      {% if team.lookingforplayers == True %}
+                        <h4><span class="badge bg-secondary">Looking for Players</span></H4>
+                      {% endif %}
+                      <hr>
                       Ages: 
                           {% for agegroups in team.agegroups.all %}
                               {{ agegroups.name }}, 
@@ -85,15 +90,11 @@
                               {{ teamTypes.types }}
                           {% empty %}
                               No information available
-                          {% endfor %}
-                    </a>
+                          {% endfor %}</a>
                     </div>
-          
-              </div>
+                  </div>
              {% endfor %}
       </div>
-
-
       <script>
 
         //Get querystring and set dropdown values

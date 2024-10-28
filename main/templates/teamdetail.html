@@ -20,7 +20,18 @@
 
 <div class="row row-cols-lg-2 g-2 g-lg-3">
   <div class="col">
-    <img src="https://api.mobilecoach.org/api/images/e1c690ba-d702-4031-8707-ef2cfc9fb9bf" class="d-block mx-lg-auto img-fluid" height="400" width="100%" loading="lazy">
+    <div class="image-container">
+      {% if teaminfo.picture == 'default.png' %}
+      {{ teaminfo.picture }}
+      {% else %}
+          <img src="{{ teaminfo.picture.url }}" width="100%" class="rounded background-image">  
+
+      {% endif %}
+      {% if teaminfo.lookingforplayers == True %}
+        <img src="{% static 'images/looking.png' %}" alt="Overlay Image" class="overlay-image" width="100">
+      {% endif %}
+    </div>
+
   </div>
   <div class="col" style="font-size:20px">
     {{ teaminfo.description }}

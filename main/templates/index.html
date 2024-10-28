@@ -7,7 +7,42 @@
 
 {% block content %}
 
- HOMEPAGE is here
+<div class="container-fluid p-0">
+  <!-- Hero Section -->
+  <div class="hero-section" style="position: relative;">
+      <img src="{% static 'images/cover.jpg' %}" class="img-fluid w-100" alt="Hero Image" style="height: 400px; object-fit: cover;">
+      <div class="hero-text" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white;">
+          <h1 class="display-1 fw-bold">Find Your Team</h1>
+          <p class="h4">Roster Spots is the source for youth sports teams</p>
+      </div>
+  </div>
+  <H1>Featured Teams</H1>
+  <!-- Row of Content -->
+  <div class="row row-cols-2 row-cols-lg-4">
+    {% for team in featuredteams %}
+          <div class="col">
+            <div class="p-3 border bg-light"><a href="teams/{{ team.slug }}">
+              {% if team.picture == 'default.png' %}
+                <img src="media/{{ team.picture }}" width="50%" class="rounded">
+              {% else %}
+                <img src="{{ team.picture.url }}" width="100%" class="rounded">  
+              {% endif %}
+              <img src="media/{{ team.picture }}" width="100%" class="rounded">
+              <h4>{{ team.name }}</h4>
+              
+              
+              <h5>{{ team.city }}, {{ team.state }}</h5>
+              
+              {% if team.lookingforplayers == True %}
+              <h4><span class="badge bg-secondary">Looking for Players</span></H4>
+                      {% endif %}
+                      <hr>
+</a>
+            </div>
+          </div>
+     {% endfor %}
+    </div>
+
 
 
 

@@ -57,14 +57,15 @@ class Teams(models.Model):
     contactEmail = models.CharField(max_length=50,blank=True,null=True,default="")
     contactPhone = models.CharField(max_length=50,blank=True,null=True,default="")
     website = models.CharField(max_length=100,blank=True,null=True,default="")
-    image = models.BooleanField(default=0)
-    picture = models.ImageField(default='default.jpg', upload_to='team_images')
+    picture = models.ImageField(default='images/teams/default.png', upload_to='images/teams')
     instagramUser = models.CharField(max_length=255,default="instagram.com", blank=True)
     xUser = models.CharField(max_length=255,default="x.com", blank=True)
     slug = models.SlugField(default="", blank=True)
     posts = models.ManyToManyField(Posts, blank=True)
     teamTypes = models.ManyToManyField(TeamTypes, blank=True)
     agegroups = models.ManyToManyField(AgeGroups, blank=True)
+    lookingforplayers = models.BooleanField(default=False)
+    featured = models.BooleanField(default=False)
     dateAdded = models.DateTimeField(default=datetime.now())
 
     def __str__(self):

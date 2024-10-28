@@ -17,15 +17,15 @@ class TeamForm(forms.ModelForm):
     
     
 
-    name = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    name = forms.CharField(required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
     city = forms.CharField(required=False,widget=forms.TextInput(attrs={'class': 'form-control'}))
     state = forms.CharField(required=False, widget=forms.Select(choices=STATES,attrs={'class': 'form-control'}))
     contactName = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
-   
+    picture = forms.ImageField(required=False, widget=forms.FileInput(attrs={'class': 'form-control'}))
 
 
 
     class Meta:
         model = Teams
-        fields = ['name','city','state','contactName']
+        fields = ['name','city','state','contactName','picture']
 
