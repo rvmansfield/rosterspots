@@ -1,0 +1,66 @@
+2024-11-05 10:54:29,503 INFO: Logging run of `manage.py simple_deploy`...
+2024-11-05 10:54:29,504 INFO: Created C:\Code\Python\Rosterspots\rosterspots\simple_deploy_logs\simple_deploy_2024-11-05-105429.log.
+2024-11-05 10:54:29,504 INFO: 
+2024-11-05 10:54:29,505 INFO: CLI args:
+2024-11-05 10:54:29,505 INFO:   verbosity: 1
+2024-11-05 10:54:29,505 INFO:   settings: None
+2024-11-05 10:54:29,505 INFO:   pythonpath: None
+2024-11-05 10:54:29,505 INFO:   traceback: False
+2024-11-05 10:54:29,505 INFO:   no_color: False
+2024-11-05 10:54:29,506 INFO:   force_color: False
+2024-11-05 10:54:29,506 INFO:   platform: heroku
+2024-11-05 10:54:29,506 INFO:   automate_all: False
+2024-11-05 10:54:29,506 INFO:   no_logging: False
+2024-11-05 10:54:29,506 INFO:   ignore_unclean_git: False
+2024-11-05 10:54:29,506 INFO:   deployed_project_name: 
+2024-11-05 10:54:29,506 INFO:   region: us-3.platform.sh
+2024-11-05 10:54:29,506 INFO:   unit_testing: False
+2024-11-05 10:54:29,506 INFO:   e2e_testing: False
+2024-11-05 10:54:29,507 INFO: 
+2024-11-05 10:54:29,507 INFO: Deployment target: heroku
+2024-11-05 10:54:29,618 INFO: Local platform identified: Windows
+2024-11-05 10:54:29,619 INFO: Local project name: rosterspots
+2024-11-05 10:54:29,619 INFO: Project root: C:\Code\Python\Rosterspots\rosterspots
+2024-11-05 10:54:29,620 INFO: Found .git dir at C:\Code\Python\Rosterspots\rosterspots.
+2024-11-05 10:54:29,620 INFO: 
+2024-11-05 10:54:29,620 INFO: git status --porcelain
+2024-11-05 10:54:29,807 INFO:  M rosterspots/__pycache__/settings.cpython-310.pyc
+2024-11-05 10:54:29,808 INFO:  M rosterspots/settings.py
+2024-11-05 10:54:29,808 INFO: ?? rosterspots/python
+2024-11-05 10:54:29,808 INFO: ?? rosterspots/python3
+2024-11-05 10:54:29,808 INFO: ?? server/
+2024-11-05 10:54:29,808 INFO: ?? simple_deploy_logs/
+2024-11-05 10:54:29,808 INFO: 
+2024-11-05 10:54:29,808 INFO: git diff --unified=0
+2024-11-05 10:54:29,977 INFO: diff --git a/rosterspots/__pycache__/settings.cpython-310.pyc b/rosterspots/__pycache__/settings.cpython-310.pyc
+2024-11-05 10:54:29,977 INFO: index 3b66deb..23dd0ac 100644
+2024-11-05 10:54:29,977 INFO: Binary files a/rosterspots/__pycache__/settings.cpython-310.pyc and b/rosterspots/__pycache__/settings.cpython-310.pyc differ
+2024-11-05 10:54:29,978 INFO: diff --git a/rosterspots/settings.py b/rosterspots/settings.py
+2024-11-05 10:54:29,978 INFO: index 25a9e15..9762dd4 100644
+2024-11-05 10:54:29,978 INFO: --- a/rosterspots/settings.py
+2024-11-05 10:54:29,978 INFO: +++ b/rosterspots/settings.py
+2024-11-05 10:54:29,978 INFO: @@ -13,0 +14 @@ from pathlib import Path
+2024-11-05 10:54:29,978 INFO: +import dj_database_url
+2024-11-05 10:54:29,978 INFO: @@ -29 +30 @@ DEBUG = True
+2024-11-05 10:54:29,978 INFO: -ALLOWED_HOSTS = ['127.0.0.1']
+2024-11-05 10:54:29,978 INFO: +ALLOWED_HOSTS = ['*']
+2024-11-05 10:54:29,978 INFO: @@ -44 +45,2 @@ INSTALLED_APPS = [
+2024-11-05 10:54:29,978 INFO: -    'accounts'
+2024-11-05 10:54:29,978 INFO: +    'accounts',
+2024-11-05 10:54:29,978 INFO: +    'simple_deploy'
+2024-11-05 10:54:29,978 INFO: @@ -103,0 +106,2 @@ DATABASES = {
+2024-11-05 10:54:29,978 INFO: +
+2024-11-05 10:54:29,978 INFO: +
+2024-11-05 10:54:29,979 INFO: 
+2024-11-05 10:54:29,979 INFO: 
+2024-11-05 10:54:29,979 INFO: SimpleDeployCommandError:
+2024-11-05 10:54:29,979 INFO: 
+2024-11-05 10:54:29,979 INFO: The output of `git status` indicates that you have uncommitted changes.
+2024-11-05 10:54:29,979 INFO: 
+2024-11-05 10:54:29,979 INFO: We highly recommend you commit all changes before running simple_deploy, so
+2024-11-05 10:54:29,979 INFO: you can easily undo configuration changes if deployment doesn't work, or if you
+2024-11-05 10:54:29,979 INFO: wish to deploy to a different platform.
+2024-11-05 10:54:29,979 INFO: 
+2024-11-05 10:54:29,979 INFO: Please commit all changes and then run simple_deploy again. If you really wish
+2024-11-05 10:54:29,979 INFO: to continue without committing current changes, you can use
+2024-11-05 10:54:29,979 INFO: the --ignore-unclean-git flag.

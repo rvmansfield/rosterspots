@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import dj_database_url
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -26,7 +27,7 @@ SECRET_KEY = 'django-insecure-=yp4wx-4bv-yj^m%%n_(g3x&$#zz0vqv9qakzkon0%8j^ri=$t
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -41,7 +42,8 @@ INSTALLED_APPS = [
     'main',
     'allauth',
     'allauth.account',
-    'accounts'
+    'accounts',
+    'simple_deploy'
 ]
 
 MIDDLEWARE = [
@@ -97,6 +99,8 @@ DATABASES = {
         'PORT': '5432',        # default PostgreSQL port
     }
 }
+
+
 
 
 
